@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form di Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Bentornato</h1>
+            <h2>Inserici username e password</h2>
+            <form method="POST" action="/login">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+                <button type="submit">Login</button>
+            </form>
+            <div class="registration-link">
+                <p>Oppure se non hai un account, <a href="/register">registrati</a>.</p>
+            </div>
+        </div>
+    </body>
+</html>

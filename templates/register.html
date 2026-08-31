@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form di Registrazione</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Benvenuto</h1>
+            <h2>Inserici i tuoi dati per completare la registrazione</h2>
+            <form method="POST" action="/register">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+                <label for="surname">Cognome</label>
+                <input type="text" id="surname" name="surname" required>
+                <label for="birth">Data di Nascita</label>
+                <input type="date" id="birth" name="birth" required>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+                <label for="confirm-password">Conferma Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required autocomplete="current-password">
+                <button type="submit">Registrati</button>
+            </form>
+        </div>
+    </body>
+</html>
