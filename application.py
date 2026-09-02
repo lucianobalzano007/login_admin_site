@@ -19,12 +19,12 @@ def login():
         print(f"Email: {email}, Password: {password}")  # Debugging line
         user = User.get_user_by_email(email)
         if user == None:
-            flash("Errore 401: Utente non trovato", "error")
+            flash("Errore 401: Email e/o password non valide", "error")
             return redirect(url_for('login'))
         if user.check_password(password):
             session['email'] = email
             return redirect(url_for('home'))
-        flash("Errore 401: Credenziali non valide", "error")
+        flash("Errore 401: Email e/o password non valide", "error")
         return redirect(url_for('login'))
     return render_template('login.html')
     
