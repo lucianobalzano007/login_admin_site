@@ -24,6 +24,8 @@ class User:
     def get_user_by_email(email):
         # Qui puoi aggiungere la logica per recuperare l'utente dal database
         user = mongo_connection.trova_utente(email)
+        if user is None:
+            return None
         utente = User(user['name'], user['surname'], user['birthdate'], user['email'], user['password'])
         return utente
     

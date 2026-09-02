@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, g
+from flask import Flask, render_template, request, redirect, url_for, session, g, flash
 from user import User
 import mongo_connection
 
@@ -19,11 +19,13 @@ def login():
         print(f"Email: {email}, Password: {password}")  # Debugging line
         user = User.get_user_by_email(email)
         if user == None:
-            return "Utente non trovato", 404
+            flash("Errore 401: Utente non trovato", "error")
+            return redirect(url_for('login'))
         if user.check_password(password):
             session['email'] = email
             return redirect(url_for('home'))
-        return "Credenziali non valide", 401
+        flash("Errore 401: Credenziali non valide", "error")
+        return redirect(url_for('login'))
     return render_template('login.html')
     
 @app.route('/home')
