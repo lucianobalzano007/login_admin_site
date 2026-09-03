@@ -3,15 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Form di Login</title>
+        <title>Form di Registrazione</title>
         <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     </head>
     <body data-bs-theme="dark">
         <div class="container-md bd-gutter my-md-4">
             <div class="container-s text-center">
-                <h1>Bentornato</h1>
-                <h2>Inserici username e password per entrare</h2>
+                <h1>Benvenuto</h1>
+                <h2>Inserici i tuoi dati per completare la registrazione</h2>
             </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -22,20 +22,35 @@
                     </div>
                 {% endif %}
             {% endwith %}
-            <form method="POST" action="/login">
+            <form method="POST" action="/register">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="surname" class="form-label">Cognome</label>
+                    <input type="text" class="form-control" id="surname" name="surname">
+                </div>
+                <div class="mb-3">
+                    <label for="birth" class="form-label">Data di nascita</label>
+                    <input type="date" class="form-control" id="birth" name="birth">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Indirizzo Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Conferma Password</label>
+                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrati</button>
             </form>
             <div class="container-s text-center mt-3">
-                <p>Oppure se non hai un account, <a href="/register">registrati</a>.</p>
+                <p>Oppure se hai un account, <a href="/login">accedi</a>.</p>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

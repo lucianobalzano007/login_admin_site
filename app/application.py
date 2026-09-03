@@ -9,6 +9,8 @@ app.secret_key = b'8a665c57fc268229c8fa04aab499193063bd6b93eff981a361ad634e360ae
 def index():
     if 'email' in session:
         return redirect(url_for('home'))
+    if mongo_connection.conta_utenti() == 0:
+        return redirect(url_for('register_user'))
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['POST','GET'])
@@ -48,9 +50,11 @@ def register_user():
         print(f"Name: {name}, Surname: {surname}, Birthdate: {birthdate}")  # Debugging line
         print(f"Email: {email}, Password: {password}")  # Debugging line
         if password != confirm_password:
-            return "Le password non coincidono", 400
+            flash("Errore 400: Le password non coincidono", "error")
+            return redirect(url_for('register_user'))
         if mongo_connection.trova_utente(email)!= None:
-            return "Utente già esistente", 400
+            flash("Errore 400: Email già in uso", "error")
+            return redirect(url_for('register_user'))
         user = User(name, surname, birthdate, email, password)
         user.create_user()
         return redirect(url_for('login'))
@@ -62,4 +66,4 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

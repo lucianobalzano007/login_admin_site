@@ -1,6 +1,7 @@
 services:
   mongo:
     image: mongo
+    hostname: mongo_med_app
     environment:
       MONGO_INITDB_ROOT_USERNAME: example
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -8,3 +9,10 @@ services:
       - "27017:27017"
     volumes:
       - ./mongo_data:/data/db
+  web:
+    build: 
+      context: app
+    container_name: med_app
+    stop_signal: SIGINT
+    ports:
+      - "5000:5000"
