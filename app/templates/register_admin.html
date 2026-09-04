@@ -22,7 +22,7 @@
                     </div>
                 {% endif %}
             {% endwith %}
-            <form method="POST" action="/register">
+            <form method="POST" action="/register_admin">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="cf" class="form-label">Codice fiscale</label>
-                    <input type="text" class="form-control" id="cf" name="cf" min="16" max="16" required>
+                    <input type="text" class="form-control" id="cf" name="cf" size="16" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Indirizzo Email</label>

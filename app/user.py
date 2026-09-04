@@ -6,7 +6,7 @@ class User:
         self.name = name
         self.surname = surname
         self.birthdate = birthdate
-        self.cf = cf,
+        self.cf = cf
         self.email = email
         self.password = password
         self.role = role

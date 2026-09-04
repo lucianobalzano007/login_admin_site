@@ -50,14 +50,14 @@ def register_admin():
         password = request.form['password']
         confirm_password = request.form['confirm-password']
         role = 'Admin'
-        print(f"Name: {name}, Surname: {surname}, Birthdate: {birthdate}")  # Debugging line
+        print(f"Name: {name}, Surname: {surname}, Birthdate: {birthdate}, Codice Fiscale: {cf}")  # Debugging line
         print(f"Email: {email}, Password: {password}")  # Debugging line
         if password != confirm_password:
             flash("Errore 400: Le password non coincidono", "error")
-            return redirect(url_for('register_user'))
+            return redirect(url_for('register_admin'))
         if mongo_connection.trova_utente(email)!= None:
             flash("Errore 400: Email già in uso", "error")
-            return redirect(url_for('register_user'))
+            return redirect(url_for('register_admin'))
         user = User(name, surname, birthdate, cf, email, password, role)
         user.create_user()
         return redirect(url_for('login'))
@@ -71,4 +71,4 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
