@@ -10,8 +10,8 @@
     <body data-bs-theme="dark">
         <div class="container-md bd-gutter my-md-4">
             <div class="container-s text-center">
-                <h1>Benvenuto</h1>
-                <h2>Inserici i tuoi dati per completare la registrazione</h2>
+                <h1>Benvenuto su Med Patente</h1>
+                <h2>Inserici i tuoi dati per la registrazione dell'admin</h2>
             </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -25,27 +25,31 @@
             <form method="POST" action="/register">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="surname" class="form-label">Cognome</label>
-                    <input type="text" class="form-control" id="surname" name="surname">
+                    <input type="text" class="form-control" id="surname" name="surname" required>
                 </div>
                 <div class="mb-3">
                     <label for="birth" class="form-label">Data di nascita</label>
-                    <input type="date" class="form-control" id="birth" name="birth">
+                    <input type="date" class="form-control" id="birth" name="birth" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cf" class="form-label">Codice fiscale</label>
+                    <input type="text" class="form-control" id="cf" name="cf" min="16" max="16" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Indirizzo Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
+                    <input type="password" class="form-control" id="password" name="password" autocomplete="current-password" required>
                 </div>
                 <div class="mb-3">
                     <label for="confirm-password" class="form-label">Conferma Password</label>
-                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" autocomplete="current-password">
+                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" autocomplete="current-password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Registrati</button>
             </form>

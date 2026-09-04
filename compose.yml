@@ -1,7 +1,7 @@
 services:
   mongo:
     image: mongo
-    hostname: mongo_med_app
+    hostname: mongo_med_patente
     environment:
       MONGO_INITDB_ROOT_USERNAME: example
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -12,7 +12,7 @@ services:
   web:
     build: 
       context: app
-    container_name: med_app
+    container_name: med_patente
     stop_signal: SIGINT
     ports:
       - "5000:5000"
