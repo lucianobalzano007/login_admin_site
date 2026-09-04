@@ -1,5 +1,5 @@
-# Creazione sito admin
+# Med Patente
 
-Questa è una webapp gestita interamente da Flask, con frontend in html, ed in backend abbiamo framework Flask in python.
+Programma per la gestione di uno studio medico che rinnova le patenti. L'applicativo risulta essere un webapp nella quale si utilizza Flask come framework, mongodb per il database.
 
-Come db abbiamo mongodb. Non risulta ancora implementato
+Il servizio viene eseguito su di un container docker.
