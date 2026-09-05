@@ -6,6 +6,7 @@ def get_mongo_client():
     user_mongo = getenv('MONGO_INITDB_ROOT_USERNAME')
     password_mongo = getenv('MONGO_INITDB_ROOT_PASSWORD')
     connection_string = f"mongodb://{user_mongo}:{password_mongo}@{host_mongo}:27017/"
+    #connection_string = f"mongodb://example:example@localhost:27017/"
     client = MongoClient(connection_string)
     return client
 
@@ -28,3 +29,11 @@ def conta_utenti():
     collection = db['utenti'] 
     count = collection.count_documents({})
     return count
+
+def ottieni_utenti():
+    client = get_mongo_client()
+    db = client['studio_medico']
+    collection = db['utenti']
+    print(collection.estimated_document_count())
+    lista_utenti=collection.find({})
+    return lista_utenti
