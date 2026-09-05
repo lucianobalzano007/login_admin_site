@@ -4,11 +4,10 @@ Gestionale web per la gestione di uno studio medico dedicato al rinnovo delle pa
 
 L'applicazione è sviluppata con Python e Flask, utilizza MongoDB come database e viene eseguita tramite Docker Compose.
 ## 📋 Indice
-
-    Descrizione
-    Tecnologie
-    Rouli Utente
-    Autore
+- [Descrizione](#descrizione)
+- [Tecnologie](#tecnologie)
+- [Rouli Utente](#ruoli-utente)
+- [Autore](#autore)
 
 ## 📝 Descrizione
 
@@ -29,8 +28,8 @@ Il progetto utilizza principalmente:
 | 🍃 PyMongo　　　　| Connessione a MongoDB        |
 | 🐳 Docker　　　　 | Containerizzazione           |
 | 🐳 Docker Compose | Orchestrazione dei container |
-| HTML/CSS　　　　　| Interfaccia web              |
-| Jinja2　　　　　　| Template engine di Flask     |
+| 🎨 HTML/CSS　　　 | Interfaccia web              |
+| ⛩️ Jinja2　　　　　| Template engine di Flask     |
 
 Le dipendenze Python attualmente dichiarate sono Flask e pymongo. 
 
