@@ -4,11 +4,15 @@ Gestionale web per la gestione di uno studio medico dedicato al rinnovo delle pa
 
 L'applicazione è sviluppata con Python e Flask, utilizza MongoDB come database e viene eseguita tramite Docker Compose.
 ## 📋 Indice
-- [Descrizione](#descrizione)
-- [Tecnologie](#tecnologie)
-- [Rouli Utente](#ruoli-utente)
-- [Autore](#autore)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [📝 Descrizione](#-descrizione)
+- [🛠️ Tecnologie](#-tecnologie)
+- [👥 Ruoli utente](#-ruoli-utente)
+- [👤 Autore](#-autore)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ## 📝 Descrizione
 
 Med Patente è un'applicazione web pensata per supportare la gestione amministrativa di uno studio medico che effettua visite per il rinnovo delle patenti.
