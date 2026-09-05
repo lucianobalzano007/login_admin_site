@@ -1,7 +1,11 @@
 from pymongo import MongoClient
+from os import getenv
 
 def get_mongo_client():
-    connection_string = "mongodb://example:example@mongo_med_patente:27017/"
+    host_mongo = getenv('MONGO_HOST_NAME')
+    user_mongo = getenv('MONGO_INITDB_ROOT_USERNAME')
+    password_mongo = getenv('MONGO_INITDB_ROOT_PASSWORD')
+    connection_string = f"mongodb://{user_mongo}:{password_mongo}@{host_mongo}:27017/"
     client = MongoClient(connection_string)
     return client
 

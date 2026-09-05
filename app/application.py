@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, g, flash
 from user import User
 import mongo_connection
+from os import getenv
 
 app = Flask(__name__)
-app.secret_key = b'8a665c57fc268229c8fa04aab499193063bd6b93eff981a361ad634e360ae755'  # Cambia questa chiave in una chiave reale
+app.secret_key = getenv('SECRET_KEY_SESSION')  # Cambia questa chiave in una chiave reale
 
 @app.route('/')
 def index():
@@ -64,6 +65,30 @@ def register_admin():
     elif mongo_connection.conta_utenti()!=0:
         return redirect(url_for('login'))
     return render_template('register_admin.html')
+
+@app.route('/crea_user', methods=['POST', 'GET'])
+def crea_user():
+    utente=User.get_user_by_email(session['email'])
+    if request.method == 'POST':
+        name = request.form['name']
+        surname = request.form['surname']
+        birthdate = request.form['birth']
+        cf = request.form['cf']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirm-password']
+        role = request.form['role']
+        if password != confirm_password:
+            flash("Errore 400: Le password non coincidono", "error")
+            return redirect(url_for('crea_user'))
+        if mongo_connection.trova_utente(email)!= None:
+            flash("Errore 400: Email già in uso", "error")
+            return redirect(url_for('crea_user'))
+        user = User(name, surname, birthdate, cf, email, password, role)
+        user.create_user()
+        flash(f"Utente {cf} creato con successo", "success")
+        return redirect(url_for('crea_user'))
+    return render_template('crea_user.html',utente=utente)
 
 @app.route('/logout')
 def logout():
